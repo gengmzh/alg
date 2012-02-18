@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.aihu001.alg.sort.optimal;
+package com.aihu001.alg.optimal;
 
 import java.util.Arrays;
 import java.util.Collections;
