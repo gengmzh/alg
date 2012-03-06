@@ -3,7 +3,6 @@
  */
 package com.github.gengmzh.alg.sort;
 
-import junit.framework.Assert;
 
 /**
  * @since 2012-3-6
@@ -58,26 +57,6 @@ public class CountingSort {
 		public String toString() {
 			return String.valueOf(value);
 		}
-	}
-
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		Item[] arr = new IntItem[] { new IntItem(15), new IntItem(1), new IntItem(13), new IntItem(4) };
-		int max = 5;
-		sort(arr, max);
-
-		Item pre = arr[0];
-		for (int i = 1; i < arr.length; i++) {
-			if (pre.value() < max) {
-				Assert.assertTrue(pre.value() <= arr[i].value());
-			}
-			System.out.print(pre.value() + " ");
-			pre = arr[i];
-		}
-		System.out.print(pre.value() + " ");
-
 	}
 
 }
