@@ -1,0 +1,4 @@
+# Hash Service Provider
+com.github.myron.spi.JavaHash
+com.github.myron.spi.MurmurHash
+
