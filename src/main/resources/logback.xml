@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<!-- console appender -->
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%date [%thread] %-5level %F{16} [%M:%L] - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<!-- rolling appender -->
+	<appender name="allFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>INFO</level>
+		</filter>
+		<File>logs/alg.all.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>logs/history/%d{yyyyMM, aux}/%d{yyyy-MM-dd_HH}.alg.all.%i.log</fileNamePattern>
+			<TimeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>50MB</maxFileSize>
+			</TimeBasedFileNamingAndTriggeringPolicy>
+			<maxHistory>1024</maxHistory>
+			<cleanHistoryOnStart>true</cleanHistoryOnStart>
+		</rollingPolicy>
+		<encoder>
+			<charset>UTF-8</charset>
+			<pattern>%date [%thread] %-5level %F{16} [%M:%L] - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="errorFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>ERROR</level>
+		</filter>
+		<File>logs/alg.error.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>logs/history/%d{yyyyMM, aux}/%d{yyyy-MM-dd}.alg.error.%i.log</FileNamePattern>
+			<TimeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>50MB</maxFileSize>
+			</TimeBasedFileNamingAndTriggeringPolicy>
+			<maxHistory>1024</maxHistory>
+			<cleanHistoryOnStart>true</cleanHistoryOnStart>
+		</rollingPolicy>
+		<encoder>
+			<charset>UTF-8</charset>
+			<pattern>%date [%thread] %-5level %F{16} [%M:%L] - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<!-- loggers -->
+	<!-- <logger name="com.github.myron" level="INFO" additivity="true">
+		<appender-ref ref="allFile" />
+		<appender-ref ref="errorFile" />
+	</logger> -->
+
+	<root level="INFO">
+		<appender-ref ref="console" />
+	</root>
+
+</configuration>
